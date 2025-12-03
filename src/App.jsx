@@ -9,28 +9,33 @@ import CrudProductos from './components/CrudProductos';
 import FrutosRojos from './components/FrutosRojos';
 import Chocolates from './components/Chocolates';
 import { CartProvider } from './components/CartContext';
-import Carrito from './components/Carrito'; 
+import Carrito from './components/Carrito';
+
+// 🔥 IMPORTACIÓN NUEVA PARA LA BÚSQUEDA GLOBAL
+import { SearchProvider } from './components/SearchContext';
 
 function App() {
-
   return (
-    <CartProvider>
-     <Router>
-      <Header />
-      <Routes>
-        <Route path="/administracion" element={<Login />} />
-        <Route path="/carousel" element={<Carousel />} />
-        <Route path="/" element={<Home/>} />
-        <Route path="/frutos-secos" element={<FrutosSecos />} />
-        <Route path="/frutos-rojos" element={<FrutosRojos />} />
-        <Route path="/Chocolates" element={<Chocolates />} />
-        <Route path="/crud" element={<CrudProductos />} />
-        <Route path="/carrito" element={<Carrito />} />
-      </Routes>
-      <Footer/>
-    </Router>
-    </CartProvider>
-  )
+    <SearchProvider>       {/* 🔥 Envolvemos toda la app */}
+      <CartProvider>       {/* Mantiene el carrito funcionando */}
+        <Router>
+          <Header />
+          <Routes>
+            <Route path="/administracion" element={<Login />} />
+            <Route path="/carousel" element={<Carousel />} />
+            <Route path="/" element={<Home />} />
+            <Route path="/frutos-secos" element={<FrutosSecos />} />
+            <Route path="/frutos-rojos" element={<FrutosRojos />} />
+            <Route path="/Chocolates" element={<Chocolates />} />
+            <Route path="/crud" element={<CrudProductos />} />
+            <Route path="/carrito" element={<Carrito />} />
+          </Routes>
+          <Footer />
+        </Router>
+      </CartProvider>
+    </SearchProvider>
+  );
 }
 
-export default App
+export default App;
+

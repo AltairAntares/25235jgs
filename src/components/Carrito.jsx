@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext, useState } from 'react';
 import { Container, Table, Button, Modal, Toast, ToastContainer } from 'react-bootstrap';
 import { CartContext } from './CartContext';
 
@@ -24,7 +24,7 @@ const Carrito = () => {
       .then(() => {
         vaciarCarrito();
         setShowForm(false);
-        setShowToast(true); // Mostrar el toast elegante
+        setShowToast(true);
       })
       .catch(() => {
         alert("Hubo un error al enviar la compra.");
@@ -36,14 +36,16 @@ const Carrito = () => {
     0
   );
 
+  /* ---------------------------
+      CARRITO VACÍO
+  ----------------------------*/
   if (carrito.length === 0) {
     return (
       <>
-        <Container className="mt-4">
-          <h3>Tu carrito está vacío</h3>
+        <Container className="mt-5 text-center">
+          <h3 style={{ color: "var(--color-accent)" }}>Tu carrito está vacío</h3>
         </Container>
 
-        {/* Toast afuera del container */}
         <ToastContainer position="top-center" className="p-3 toast-elevated">
           <Toast
             className="elegant-toast text-center"
@@ -63,11 +65,19 @@ const Carrito = () => {
 
   return (
     <>
-      <Container className="mt-4">
-        <h3>Carrito de compras</h3>
+      <Container className="mt-4 p-4 rounded-4 shadow-sm"
+        style={{
+          backgroundColor: "var(--color-bg)",
+          border: "1px solid rgba(0,0,0,0.05)"
+        }}
+      >
+        <h3 style={{ color: "var(--color-accent)", fontWeight: "700" }}>
+          Carrito de compras
+        </h3>
 
-        <Table striped bordered hover responsive className="mt-3">
-          <thead>
+        {/* TABLA PREMIUM */}
+        <Table bordered hover responsive className="mt-3 shadow-sm rounded-3 overflow-hidden">
+          <thead style={{ backgroundColor: "var(--color-secondary)", color: "white" }}>
             <tr>
               <th>Producto</th>
               <th>Precio unitario</th>
@@ -76,10 +86,11 @@ const Carrito = () => {
               <th></th>
             </tr>
           </thead>
+
           <tbody>
             {carrito.map((item) => (
               <tr key={item.id}>
-                <td>{item.title}</td>
+                <td style={{ fontWeight: "600" }}>{item.title}</td>
                 <td>${Number(item.price).toFixed(2)}</td>
                 <td>{item.cantidad}</td>
                 <td>${(Number(item.price) * item.cantidad).toFixed(2)}</td>
@@ -87,6 +98,7 @@ const Carrito = () => {
                   <Button
                     variant="danger"
                     size="sm"
+                    style={{ borderRadius: "8px" }}
                     onClick={() => eliminarDelCarrito(item.id)}
                   >
                     Eliminar
@@ -97,22 +109,35 @@ const Carrito = () => {
           </tbody>
         </Table>
 
-        <h5 className="text-end">Total a pagar: ${total.toFixed(2)}</h5>
+        <h5 className="text-end mt-3" style={{ color: "var(--color-accent)" }}>
+          <strong>Total a pagar: </strong>${total.toFixed(2)}
+        </h5>
 
         <div className="text-end mt-3">
-          <Button variant="success" onClick={() => setShowForm(true)}>
+          <Button
+            onClick={() => setShowForm(true)}
+            style={{
+              backgroundColor: "var(--color-primary)",
+              borderColor: "var(--color-primary)",
+              color: "var(--color-accent)",
+              padding: "0.7rem 1.5rem",
+              borderRadius: "12px",
+              fontWeight: "600"
+            }}
+          >
             Comprar
           </Button>
         </div>
 
-        {/* Modal con formulario Formspree */}
-        <Modal show={showForm} onHide={() => setShowForm(false)}>
-          <Modal.Header closeButton>
-            <Modal.Title>Completar compra</Modal.Title>
+        {/* MODAL PREMIUM */}
+        <Modal show={showForm} onHide={() => setShowForm(false)} centered>
+          <Modal.Header closeButton style={{ backgroundColor: "var(--color-secondary)" }}>
+            <Modal.Title style={{ color: "white" }}>Completar compra</Modal.Title>
           </Modal.Header>
 
-          <Modal.Body>
+          <Modal.Body style={{ padding: "1.5rem", backgroundColor: "var(--color-bg)" }}>
             <form onSubmit={confirmarCompra}>
+
               <div className="d-flex gap-3">
                 <div className="form-group w-100">
                   <label>Nombre:</label>
@@ -142,23 +167,31 @@ const Carrito = () => {
                 <textarea className="form-control" name="Mensaje" rows="3"></textarea>
               </div>
 
-              {/* Campos ocultos con datos del pedido */}
               <input
                 type="hidden"
                 name="Pedido"
                 value={carrito
                   .map(
                     (item) =>
-                      `${item.title} x ${item.cantidad} = $${
-                        item.price * item.cantidad
-                      }`
+                      `${item.title} x ${item.cantidad} = $${item.price * item.cantidad}`
                   )
                   .join(" | ")}
               />
 
               <input type="hidden" name="Total" value={total} />
 
-              <Button className="w-100 mt-3" variant="primary" type="submit">
+              <Button
+                className="w-100 mt-3"
+                type="submit"
+                style={{
+                  backgroundColor: "var(--color-primary)",
+                  borderColor: "var(--color-primary)",
+                  color: "var(--color-accent)",
+                  borderRadius: "10px",
+                  padding: "0.7rem",
+                  fontWeight: "600"
+                }}
+              >
                 Confirmar Compra
               </Button>
             </form>
@@ -166,7 +199,7 @@ const Carrito = () => {
         </Modal>
       </Container>
 
-      {/* Toast SIEMPRE afuera del layout */}
+      {/* TOAST GLOBAL */}
       <ToastContainer position="top-center" className="p-3 toast-elevated">
         <Toast
           className="elegant-toast text-center"

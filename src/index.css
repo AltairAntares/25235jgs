@@ -1,73 +1,55 @@
+/* ------------------------------------------
+   🎨 PALETA DE COLORES SNAKEAR ARGENTINA
+------------------------------------------- */
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  --color-primary: #f3ce88;    /* Miel */
+  --color-bg: #e2ad52d0;       /* Crema */
+  --color-text: #3d2f20;       /* Cacao */
+  --color-accent: #2f2418;     /* Chocolate oscuro */
+  --color-success: #7a8f58;    /* Verde oliva */
+
+  font-family: "Avenir", system-ui, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #000000;
+  color: var(--color-text);
+  background-color: var(--color-bg);
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* ------------------------------------------
+   🎯 RESET BÁSICO
+------------------------------------------- */
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background-color: var(--color-bg);
+  color: var(--color-text);
 }
 
 a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
+  color: var(--color-accent);
+  text-decoration: none;
+  transition: 0.2s ease-in-out;
 }
 a:hover {
-  color: #535bf2;
-}
-
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-}
-
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+  color: var(--color-text);
 }
 
 button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
   cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  transition: 0.2s ease-in-out;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
-}
+/* ------------------------------------------
+   🍯 TOAST ELEGANTE
+------------------------------------------- */
 .elegant-toast {
-  background: linear-gradient(135deg, #28a745, #34ce57);
+  background: linear-gradient(135deg, var(--color-success), #9bbf6a);
   color: white;
   border-radius: 15px;
   padding: 20px;
@@ -90,4 +72,65 @@ button:focus-visible {
 .toast-icon {
   font-size: 45px;
   margin-bottom: 10px;
+}
+
+/* ------------------------------------------
+   🔍 BARRA DE BÚSQUEDA EXPANDIBLE
+------------------------------------------- */
+.search-wrapper {
+  transition: width 0.3s ease;
+  position: relative;
+}
+
+.search-wrapper:focus-within {
+  width: 340px !important;
+}
+
+@media (max-width: 768px) {
+  .search-wrapper {
+    width: 90% !important;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+/* ------------------------------------------
+   ✨ ESTILOS UTILITARIOS
+------------------------------------------- */
+.text-accent {
+  color: var(--color-accent);
+}
+
+.bg-primary {
+  background-color: var(--color-primary) !important;
+}
+
+.bg-secondary {
+  background-color: var(--color-bg) !important;
+}
+
+/* Sombra suave usada en tarjetas / contenedores */
+.soft-shadow {
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+.header-clean {
+  background-color: var(--color-primary) !important;
+}
+/* Limpia el background impuesto por bootstrap */
+.header-clean {
+  background-color: var(--color-primary) !important;
+  border-bottom: 4px solid var(--color-accent);
+}
+
+/* ------------------------------------------
+   💥 SOLUCIÓN DE ALTA ESPECIFICIDAD
+------------------------------------------- */
+
+/* ------------------------------------------
+   ✅ SOLUCIÓN FINAL CON CLASE CUSTOM
+------------------------------------------- */
+
+/* Aplica tu color principal, ¡incluso sobre bg-transparent! */
+.navbar-custom-color {
+  background-color: var(--color-primary) !important;
 }
