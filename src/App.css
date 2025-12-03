@@ -40,3 +40,34 @@
 .read-the-docs {
   color: #888;
 }
+.toast-elevated {
+  z-index: 5000 !important;
+}
+
+.elegant-toast {
+  background: linear-gradient(135deg, #28a745, #34ce57);
+  color: white;
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+  animation: fadeInScale 0.6s ease forwards;
+  text-align: center;
+  z-index: 5001 !important;
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.6);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.toast-icon {
+  font-size: 45px;
+  margin-bottom: 10px;
+}
+
