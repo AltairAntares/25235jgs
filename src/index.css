@@ -2,8 +2,8 @@
    🎨 PALETA DE COLORES SNAKEAR ARGENTINA
 ------------------------------------------- */
 :root {
-  --color-primary: #f3ce88;    /* Miel */
-  --color-bg: #e2ad52d0;       /* Crema */
+  --color-primary: #d8b75d;   /* Miel */
+  --color-bg: #f1e0c1;       /* Crema */
   --color-text: #3d2f20;       /* Cacao */
   --color-accent: #2f2418;     /* Chocolate oscuro */
   --color-success: #7a8f58;    /* Verde oliva */
@@ -122,15 +122,21 @@ button {
   border-bottom: 4px solid var(--color-accent);
 }
 
-/* ------------------------------------------
-   💥 SOLUCIÓN DE ALTA ESPECIFICIDAD
-------------------------------------------- */
 
-/* ------------------------------------------
-   ✅ SOLUCIÓN FINAL CON CLASE CUSTOM
-------------------------------------------- */
 
-/* Aplica tu color principal, ¡incluso sobre bg-transparent! */
-.navbar-custom-color {
-  background-color: var(--color-primary) !important;
+
+/* === Botones estilo tierra para el Header === */
+/* Define tu color de fondo y de texto personalizado */
+.btn-custom-color {
+  background-color: var(--color-primary); /* Un color naranja/rojo personalizado */
+  border-color: #8a7d66;
+  color: rgb(0, 0, 0); /* Asegúrate de que el texto sea legible */
 }
+
+/* Define el estilo al pasar el ratón (hover) para una mejor experiencia de usuario */
+.btn-custom-color:hover {
+  background-color: #3d2f20;  /* Un tono ligeramente más oscuro para el hover */
+  border-color: #eed6a1;
+  color: rgb(255, 255, 255); /* Asegúrate de que el texto sea legible */
+}
+

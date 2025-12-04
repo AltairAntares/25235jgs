@@ -20,7 +20,7 @@ function App() {
       <CartProvider>       {/* Mantiene el carrito funcionando */}
         <Router>
           <Header />
-          <Routes>
+          <Routes >         
             <Route path="/administracion" element={<Login />} />
             <Route path="/carousel" element={<Carousel />} />
             <Route path="/" element={<Home />} />

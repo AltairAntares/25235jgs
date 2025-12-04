@@ -34,7 +34,7 @@ const Home = () => {
           top: "70px",           // debajo del título sin tocarlo
           left: "50%",
           transform: "translateX(-50%)",
-          width: "260px",
+          width: "300px",
           background: "white",
           borderRadius: "40px",
           padding: "5px 15px",
@@ -44,7 +44,7 @@ const Home = () => {
           transition: "width 0.3s ease"
         }}
       >
-        <FontAwesomeIcon icon={faSearch} style={{ color: "#555" }} />
+        <FontAwesomeIcon icon={faSearch} style={{ color: "#887645ff" }} />
 
         <Form.Control
           type="search"
@@ -60,7 +60,7 @@ const Home = () => {
       </div>
 
       {/* SEPARADOR PARA QUE EL BUSCADOR NO SE SUPERPONGA A PRODUCTOS */}
-      <div style={{ height: "80px" }}></div>
+      <div style={{ height: "20px" }}></div>
 
       {/* LISTA DE PRODUCTOS */}
       <ProductList />
