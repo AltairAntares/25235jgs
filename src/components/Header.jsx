@@ -33,8 +33,8 @@ return (
       
       {/* LINKS */} 
             <div className="d-flex align-items-center"> 
-        <Button variant="outline-dark" as={Link} to="/carousel" className="me-3"> Home</Button> 
-        <Button variant="outline-dark" as={Link} to="/" className="me-3">Productos</Button> 
+        <Button variant="outline-dark" as={Link} to="/" className="me-3"> Home</Button> 
+        <Button variant="outline-dark" as={Link} to="/productos" className="me-3">Productos</Button> 
         <Button variant="outline-dark" as={Link} to="/frutos-secos" className="me-3">Frutos Secos</Button> 
         <Button variant="outline-dark" as={Link} to="/frutos-rojos" className="me-3">Frutos Rojos</Button> 
         <Button variant="outline-dark" as={Link} to="/chocolates" className="me-3">Chocolates</Button> 
