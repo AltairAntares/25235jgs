@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { Container, Table, Button, Modal, Toast, ToastContainer } from 'react-bootstrap';
 import { CartContext } from './CartContext';
+import VideoChoco from "../assets/videos/choco (7).mp4";
 
 const Carrito = () => {
   const { carrito, eliminarDelCarrito, vaciarCarrito } = useContext(CartContext);
@@ -131,13 +132,58 @@ const Carrito = () => {
 
         {/* MODAL PREMIUM */}
         <Modal show={showForm} onHide={() => setShowForm(false)} centered>
-          <Modal.Header closeButton style={{ backgroundColor: "var(--color-secondary)" }}>
-            <Modal.Title style={{ color: "white" }}>Completar compra</Modal.Title>
-          </Modal.Header>
+<Modal.Header 
+  closeButton 
+  style={{
+    backgroundColor: "var(--color-secondary)",
+    padding: 0,
+    position: "relative",
+    overflow: "hidden",
+    height: "90px",    // <--- altura necesaria para que el video exista
+    zIndex: 5,
+  }}
+>
+  {/* VIDEO DE FONDO */}
+  <video
+    src={VideoChoco}
+    autoPlay
+    loop
+    muted
+    playsInline
+    style={{
+      position: "absolute",
+      top: "50%",
+      left: "50%",
+      width: "100%",
+      height: "100%",
+      objectFit: "cover",
+      transform: "translate(-50%, -50%)",
+      zIndex: -1,
+      opacity: 0.95,     // opcional
+      pointerEvents: "none",
+
+    }}
+  ></video>
+
+  {/* TÍTULO ENCIMA DEL VIDEO */}
+  <Modal.Title
+    style={{
+      position: "relative",
+      zIndex: 2,
+      color: "white",
+      padding: "1rem",
+      fontWeight: "700",
+      textShadow: "0 2px 4px rgba(0,0,0,0.6)"
+    }}
+  >
+    Completar compra
+  </Modal.Title>
+</Modal.Header>
+
 
           <Modal.Body style={{ padding: "1.5rem", backgroundColor: "var(--color-bg)" }}>
+                          
             <form onSubmit={confirmarCompra}>
-
               <div className="d-flex gap-3">
                 <div className="form-group w-100">
                   <label>Nombre:</label>
@@ -161,6 +207,11 @@ const Carrito = () => {
                   <input className="form-control" type="email" name="email" required />
                 </div>
               </div>
+
+                <div className="form-group w-100">
+                  <label>Dirección:</label>
+                  <input className="form-control" type="text" name="Dirección" required />
+                </div>
 
               <div className="form-group mt-3">
                 <label>Mensaje:</label>
