@@ -15,7 +15,7 @@ const Home = () => {
       style={{ backgroundColor: "#f3ce88ff", color: "black", position: "relative" }}
     >
 
-      {/* 🟡 TÍTULO CENTRADO */}
+      {/* TÍTULO CENTRADO */}
       <h1
         className="text-center mb-5"
         style={{

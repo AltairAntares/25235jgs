@@ -7,10 +7,10 @@ import { CartContext } from './CartContext';
 import { SearchContext } from './SearchContext'; 
 import '../index.css';
 
-// 🔥 IMPORTANTE 
+//  IMPORTANTE 
 const Header = () => { const { carrito } = useContext(CartContext); 
 const { search, setSearch } = useContext(SearchContext); 
-// 🔥 CONTROL DE BUSQUEDA 
+//  CONTROL DE BUSQUEDA 
 const totalItems = carrito 
 ? carrito.reduce((acc, item) => acc + item.cantidad, 0) : 0;
 
