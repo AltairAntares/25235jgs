@@ -9,7 +9,7 @@ const Footer = () => {
       <Container>
         <Row>
           <Col md={6}>
-            <p className="mb-0">@ Snakear Argentina - 2025</p>
+            <p className="mb-0">@ Snackear Argentina - 2025</p>
             <p className="mb-0">Derechos reservados</p>
           </Col>
           <Col md={6}>

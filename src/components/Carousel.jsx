@@ -19,6 +19,7 @@ function ControlledCarousel() {
   return (
     <>
       <Carousel activeIndex={index} onSelect={handleSelect} interval={3000}>
+
         <Carousel.Item>
           <img
             className="d-block w-100"
@@ -26,9 +27,18 @@ function ControlledCarousel() {
             alt="First slide"
             style={{ height: '400px', objectFit: 'cover' }}
           />
-          <Carousel.Caption>
-            <h3>SNAKEAR Argentina</h3>
-            <p>Somos una empresa lider en la comercialización de snacks saludables.</p>
+             <Carousel.Caption>
+            <div
+              style={{
+                backgroundColor: "rgba(0, 0, 0, 0.55)", // negro translúcido
+                padding: "1rem 1.5rem",
+                borderRadius: "12px",
+                backdropFilter: "blur(4px)" // efecto glass opcional
+              }}
+            >
+              <h4 style={{ color: "white", margin: 0 }}>Somos una empresa lider en la comercialización de snacks saludables.</h4>
+
+            </div>
           </Carousel.Caption>
         </Carousel.Item>
 
@@ -39,58 +49,77 @@ function ControlledCarousel() {
             alt="Second slide"
             style={{ height: '400px', objectFit: 'cover' }}
           />
-          <Carousel.Caption>
-            <h3>SNAKEAR Argentina</h3>
-            <p>Garantizamos la calidad de nuestros productos mediante estrictas normas de calidad.</p>
+             <Carousel.Caption>
+            <div
+              style={{
+                backgroundColor: "rgba(0, 0, 0, 0.55)", // negro translúcido
+                padding: "1rem 1.5rem",
+                borderRadius: "12px",
+                backdropFilter: "blur(4px)" // efecto glass opcional
+              }}
+            >
+              <h4 style={{ color: "white", margin: 0 }}>Priorizamos productos de origen nacional.</h4>
+
+            </div>
           </Carousel.Caption>
         </Carousel.Item>
 
         <Carousel.Item>
           <img
             className="d-block w-100"
-            src={Slide3}  
-            alt="Third slide"
+            src={Slide3} 
+            alt="third slide"
             style={{ height: '400px', objectFit: 'cover' }}
           />
-          <Carousel.Caption>
-            <h3>SNAKEAR Argentina</h3>
-            <p>Priorizamos productos de origen nacional.</p>
+             <Carousel.Caption>
+            <div
+              style={{
+                backgroundColor: "rgba(0, 0, 0, 0.55)", // negro translúcido
+                padding: "1rem 1.5rem",
+                borderRadius: "12px",
+                backdropFilter: "blur(4px)" // efecto glass opcional
+              }}
+            >
+              <h4 style={{ color: "white", margin: 0 }}>Garantizamos la calidad de nuestros productos mediante estrictas normas de calidad.</h4>
+
+            </div>
           </Carousel.Caption>
         </Carousel.Item>
+
       </Carousel>
 
-      {/* VIDEO DEBAJO DEL CARRUSEL */}
-<div
-  style={{
-    position: "relative",
-    width: "100%",
-    height: "80px",
-    marginTop: "30px",
-    borderRadius: "18px",
-    overflow: "hidden",
-    boxShadow: "0 6px 18px rgba(0,0,0,0.22)"
-  }}
->
-  {/* VIDEO DE FONDO */}
-  <video
-    src={VideoChoco}
-    autoPlay
-    loop
-    muted
-    playsInline
-    style={{
-      position: "absolute",
-      top: "50%",
-      left: "50%",
-      width: "100%",
-      height: "100%",
-      objectFit: "cover",
-      transform: "translate(-50%, -50%)",
-      zIndex: 1
-    }}
-  ></video>
+      {/* VIDEO AL PIE */}
+        <div
+          style={{
+            position: "relative",
+            width: "100%",
+            height: "80px",
+            marginTop: "30px",
+            borderRadius: "18px",
+            overflow: "hidden",
+            boxShadow: "0 6px 18px rgba(0,0,0,0.22)"
+          }}
+        >
+          {/* VIDEO DE FONDO */}
+          <video
+            src={VideoChoco}
+            autoPlay
+            loop
+            muted
+            playsInline
+            style={{
+              position: "absolute",
+              top: "50%",
+              left: "50%",
+              width: "100%",
+              height: "100%",
+              objectFit: "cover",
+              transform: "translate(-50%, -50%)",
+              zIndex: 1
+            }}
+          ></video>
 
-</div>
+        </div>
 
     </>
   );

@@ -130,55 +130,55 @@ const Carrito = () => {
           </Button>
         </div>
 
-        {/* MODAL PREMIUM */}
-        <Modal show={showForm} onHide={() => setShowForm(false)} centered>
-<Modal.Header 
-  closeButton 
-  style={{
-    backgroundColor: "var(--color-secondary)",
-    padding: 0,
-    position: "relative",
-    overflow: "hidden",
-    height: "90px",    // <--- altura necesaria para que el video exista
-    zIndex: 5,
-  }}
->
-  {/* VIDEO DE FONDO */}
-  <video
-    src={VideoChoco}
-    autoPlay
-    loop
-    muted
-    playsInline
-    style={{
-      position: "absolute",
-      top: "50%",
-      left: "50%",
-      width: "100%",
-      height: "100%",
-      objectFit: "cover",
-      transform: "translate(-50%, -50%)",
-      zIndex: -1,
-      opacity: 0.95,     // opcional
-      pointerEvents: "none",
+                  {/* MODAL PREMIUM */}
+                  <Modal show={showForm} onHide={() => setShowForm(false)} centered>
+          <Modal.Header 
+            closeButton 
+            style={{
+              backgroundColor: "var(--color-secondary)",
+              padding: 0,
+              position: "relative",
+              overflow: "hidden",
+              height: "90px",    // <--- altura necesaria para que el video exista
+              zIndex: 5,
+            }}
+          >
+            {/* VIDEO DE FONDO */}
+            <video
+              src={VideoChoco}
+              autoPlay
+              loop
+              muted
+              playsInline
+              style={{
+                position: "absolute",
+                top: "50%",
+                left: "50%",
+                width: "100%",
+                height: "100%",
+                objectFit: "cover",
+                transform: "translate(-50%, -50%)",
+                zIndex: -1,
+                opacity: 0.95,     // opcional
+                pointerEvents: "none",
 
-    }}
-  ></video>
+              }}
+            ></video>
 
-  {/* TÍTULO ENCIMA DEL VIDEO */}
-  <Modal.Title
-    style={{
-      position: "relative",
-      zIndex: 2,
-      color: "white",
-      padding: "1rem",
-      fontWeight: "700",
-      textShadow: "0 2px 4px rgba(0,0,0,0.6)"
-    }}
-  >
-    Completar compra
-  </Modal.Title>
-</Modal.Header>
+            {/* TÍTULO ENCIMA DEL VIDEO */}
+            <Modal.Title
+              style={{
+                position: "relative",
+                zIndex: 2,
+                color: "white",
+                padding: "1rem",
+                fontWeight: "700",
+                textShadow: "0 2px 4px rgba(0,0,0,0.6)"
+              }}
+            >
+              Completar compra
+            </Modal.Title>
+          </Modal.Header>
 
 
           <Modal.Body style={{ padding: "1.5rem", backgroundColor: "var(--color-bg)" }}>
@@ -264,7 +264,11 @@ const Carrito = () => {
           <div>Su pedido fue enviado correctamente.</div>
         </Toast>
       </ToastContainer>
+
+
     </>
+
+
   );
 };
 

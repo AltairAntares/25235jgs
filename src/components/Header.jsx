@@ -24,7 +24,7 @@ return (
   src="../src/assets/pictures/Logo.png" 
   alt="Logo" 
   style={{ width: "150px", height: "auto", marginRight: "30px" }} /> 
-  <span style={{ fontSize:"3rem"}}>Snakear</span> 
+  <span style={{ fontSize:"3rem"}}>SNACKEAR</span> 
   
   </Navbar.Brand> 
   <Navbar.Toggle aria-controls="basic-navbar-nav" /> 

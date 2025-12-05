@@ -2,7 +2,8 @@ import React, { useEffect, useState, useContext } from 'react';
 import { Row, Col } from 'react-bootstrap';
 import ProductCard from './ProductCard';
 import { CartContext } from './CartContext';
-import { SearchContext } from './SearchContext';  // 🔥 IMPORTANTE
+import { SearchContext } from './SearchContext'; 
+
 
 const ProductList = ({ category = null }) =>  {
   const [products, setProducts] = useState([]);
