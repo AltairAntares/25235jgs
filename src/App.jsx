@@ -1,10 +1,10 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
-import Home from './components/Home';
+import Productos from './components/Products';
 import FrutosSecos from './components/FrutosSecos';
 import Login from './components/Login'; 
 import Footer from './components/Footer';
-import Carousel from './components/Carousel';
+import Home from './components/Home';
 import CrudProductos from './components/CrudProductos';
 import FrutosRojos from './components/FrutosRojos';
 import Chocolates from './components/Chocolates';
@@ -16,26 +16,41 @@ import { SearchProvider } from './components/SearchContext';
 
 function App() {
   return (
-    <SearchProvider>       {/* 🔥 Envolvemos toda la app */}
-      <CartProvider>       {/* Mantiene el carrito funcionando */}
+    <SearchProvider>
+      <CartProvider>
+        
+        {/* NOTA: el BrowserRouter con basename debe estar en main.jsx */}
+        
         <Router>
           <Header />
-          <Routes >         
-            <Route path="/administracion" element={<Login />} />
-            <Route path="/" element={<Carousel />} />
-            <Route path="/productos" element={<Home />} />
-            <Route path="/frutos-secos" element={<FrutosSecos />} />
-            <Route path="/frutos-rojos" element={<FrutosRojos />} />
-            <Route path="/Chocolates" element={<Chocolates />} />
-            <Route path="/crud" element={<CrudProductos />} />
-            <Route path="/carrito" element={<Carrito />} />
+
+          <Routes>
+
+            {/* ⭐ HOME PARA GITHUB PAGES */}
+            <Route index element={<Home />} />
+
+            {/* OTRAS RUTAS SIN "/" AL INICIO */}
+            <Route path="administracion" element={<Login />} />
+            <Route path="productos" element={<Productos />} />
+            <Route path="frutos-secos" element={<FrutosSecos />} />
+            <Route path="frutos-rojos" element={<FrutosRojos />} />
+            <Route path="chocolates" element={<Chocolates />} />
+            <Route path="crud" element={<CrudProductos />} />
+            <Route path="carrito" element={<Carrito />} />
+
+            {/* CATCH-ALL */}
+            <Route path="*" element={<Home />} />
+
           </Routes>
+
           <Footer />
         </Router>
+
       </CartProvider>
     </SearchProvider>
   );
 }
 
 export default App;
+
 

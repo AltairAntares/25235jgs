@@ -1,107 +1,131 @@
-import React, { useContext } from 'react';
-import ProductList from './ProductList';
-import { SearchContext } from './SearchContext';
-import { Form } from 'react-bootstrap';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import { useState } from 'react';
+import Carousel from 'react-bootstrap/Carousel';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+// Imágenes
+import Slide1 from '../assets/pictures/Slide_1.jpg';
+import Slide2 from '../assets/pictures/Slide_2.jpg';
+import Slide3 from '../assets/pictures/Slide_3.jpg';
+
+// Video
 import VideoChoco from "../assets/videos/choco_7.mp4";
 
-const Home = () => {
-  const { search, setSearch } = useContext(SearchContext);
+function ControlledCarousel() {
+  const [index, setIndex] = useState(0);
+
+  const handleSelect = (selectedIndex) => {
+    setIndex(selectedIndex);
+  };
 
   return (
-    <div
-      className="container py-4"
-      style={{ backgroundColor: "#f3ce88ff", color: "black", position: "relative" }}
-    >
+    <>
+      <Carousel activeIndex={index} onSelect={handleSelect} interval={3000}>
 
-      {/* TÍTULO CENTRADO */}
-      <h1
-        className="text-center mb-5"
-        style={{
-          fontSize: "2rem",
-          lineHeight: 1.2,
-          marginBottom: "3rem"
-        }}
-      >
-        Nuestros productos
-      </h1>
+        <Carousel.Item>
+          <img
+            className="d-block w-100"
+            src={Slide1} 
+            alt="First slide"
+            style={{ height: '400px', objectFit: 'cover' }}
+          />
+             <Carousel.Caption>
+            <div
+              style={{
+                backgroundColor: "rgba(0, 0, 0, 0.55)", // negro translúcido
+                padding: "1rem 1.5rem",
+                borderRadius: "12px",
+                backdropFilter: "blur(4px)" // efecto glass opcional
+              }}
+            >
+              <h4 style={{ color: "white", margin: 0 }}>Somos una empresa lider en la comercialización de snacks saludables.</h4>
 
-      {/* 🔍 BARRA DE BÚSQUEDA */}
-      <div
-        className="search-wrapper shadow-lg"
-        style={{
-          position: "absolute",
-          top: "70px",           // debajo del título sin tocarlo
-          left: "50%",
-          transform: "translateX(-50%)",
-          width: "300px",
-          background: "white",
-          borderRadius: "40px",
-          padding: "5px 15px",
-          display: "flex",
-          alignItems: "center",
-          gap: "10px",
-          transition: "width 0.3s ease"
-        }}
-      >
-        <FontAwesomeIcon icon={faSearch} style={{ color: "#887645ff" }} />
+            </div>
+          </Carousel.Caption>
+        </Carousel.Item>
 
-        <Form.Control
-          type="search"
-          placeholder="Buscar productos..."
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
+        <Carousel.Item>
+          <img
+            className="d-block w-100"
+            src={Slide2} 
+            alt="Second slide"
+            style={{ height: '400px', objectFit: 'cover' }}
+          />
+             <Carousel.Caption>
+            <div
+              style={{
+                backgroundColor: "rgba(0, 0, 0, 0.55)", // negro translúcido
+                padding: "1rem 1.5rem",
+                borderRadius: "12px",
+                backdropFilter: "blur(4px)" // efecto glass opcional
+              }}
+            >
+              <h4 style={{ color: "white", margin: 0 }}>Priorizamos productos de origen nacional.</h4>
+
+            </div>
+          </Carousel.Caption>
+        </Carousel.Item>
+
+        <Carousel.Item>
+          <img
+            className="d-block w-100"
+            src={Slide3} 
+            alt="third slide"
+            style={{ height: '400px', objectFit: 'cover' }}
+          />
+             <Carousel.Caption>
+            <div
+              style={{
+                backgroundColor: "rgba(0, 0, 0, 0.55)", // negro translúcido
+                padding: "1rem 1.5rem",
+                borderRadius: "12px",
+                backdropFilter: "blur(4px)" // efecto glass opcional
+              }}
+            >
+              <h4 style={{ color: "white", margin: 0 }}>Garantizamos la calidad de nuestros productos mediante estrictas normas de calidad.</h4>
+
+            </div>
+          </Carousel.Caption>
+        </Carousel.Item>
+
+      </Carousel>
+
+      {/* VIDEO AL PIE */}
+        <div
           style={{
-            border: "none",
-            boxShadow: "none",
-            paddingLeft: "10px"
+            position: "relative",
+            width: "100%",
+            height: "80px",
+            marginTop: "30px",
+            borderRadius: "18px",
+            overflow: "hidden",
+            boxShadow: "0 6px 18px rgba(0,0,0,0.22)"
           }}
-        />
-      </div>
+        >
+          {/* VIDEO DE FONDO */}
+          <video
+            src={VideoChoco}
+            autoPlay
+            loop
+            muted
+            playsInline
+            style={{
+              position: "absolute",
+              top: "50%",
+              left: "50%",
+              width: "100%",
+              height: "100%",
+              objectFit: "cover",
+              transform: "translate(-50%, -50%)",
+              zIndex: 1
+            }}
+          ></video>
 
-      {/* SEPARADOR PARA QUE EL BUSCADOR NO SE SUPERPONGA A PRODUCTOS */}
-      <div style={{ height: "20px" }}></div>
+        </div>
 
-      {/* LISTA DE PRODUCTOS */}
-      <ProductList />
-
-            {/* VIDEO AL PIE */}
-              <div
-                style={{
-                  position: "relative",
-                  width: "100%",
-                  height: "80px",
-                  marginTop: "30px",
-                  borderRadius: "18px",
-                  overflow: "hidden",
-                  boxShadow: "0 6px 18px rgba(0,0,0,0.22)"
-                }}
-              >
-                {/* VIDEO DE FONDO */}
-                <video
-                  src={VideoChoco}
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  style={{
-                    position: "absolute",
-                    top: "50%",
-                    left: "50%",
-                    width: "100%",
-                    height: "100%",
-                    objectFit: "cover",
-                    transform: "translate(-50%, -50%)",
-                    zIndex: 1
-                  }}
-                ></video>
-      
-              </div>
-
-    </div>
+    </>
   );
-};
+}
 
-export default Home;
+export default ControlledCarousel;
+
 
