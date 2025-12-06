@@ -2,11 +2,11 @@
    🎨 PALETA DE COLORES SNAKEAR ARGENTINA
 ------------------------------------------- */
 :root {
-  --color-primary: #d8b75d;   /* Miel */
-  --color-bg: #f3dcb3;       /* Crema */
-  --color-text: #3d2f20;       /* Cacao */
-  --color-accent: #2f2418;     /* Chocolate oscuro */
-  --color-success: #7a8f58;    /* Verde oliva */
+  --color-primary: #d8b75d;
+  --color-bg: #f3dcb3;
+  --color-text: #3d2f20;
+  --color-accent: #2f2418;
+  --color-success: #7a8f58;
 
   font-family: "Avenir", system-ui, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -21,7 +21,7 @@
 }
 
 /* ------------------------------------------
-   🎯 RESET BÁSICO
+   RESET BÁSICO
 ------------------------------------------- */
 body {
   margin: 0;
@@ -46,6 +46,29 @@ button {
 }
 
 /* ------------------------------------------
+   HEADER Y MENÚ RESPONSIVO
+------------------------------------------- */
+
+/* Fondo completo del header */
+.header-bg {
+  background-color: var(--color-primary) !important;
+  border-bottom: 4px solid var(--color-accent);
+}
+
+/* Mantiene ordenados los botones aún en mobile */
+.nav-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+/* Ajusta padding del navbar completo */
+.navbar {
+  padding-top: 12px !important;
+  padding-bottom: 12px !important;
+}
+
+/* ------------------------------------------
    🍯 TOAST ELEGANTE
 ------------------------------------------- */
 .elegant-toast {
@@ -59,14 +82,8 @@ button {
 }
 
 @keyframes fadeInScale {
-  from {
-    opacity: 0;
-    transform: scale(0.6);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
+  from { opacity: 0; transform: scale(0.6); }
+  to { opacity: 1; transform: scale(1); }
 }
 
 .toast-icon {
@@ -95,44 +112,27 @@ button {
 }
 
 /* ------------------------------------------
-   ✨ ESTILOS UTILITARIOS
+   UTILITARIOS
 ------------------------------------------- */
-.text-accent {
-  color: var(--color-accent);
-}
+.text-accent { color: var(--color-accent); }
 
-.bg-primary {
-  background-color: var(--color-primary) !important;
-}
+.bg-primary { background-color: var(--color-primary) !important; }
 
-.bg-secondary {
-  background-color: var(--color-bg) !important;
-}
+.bg-secondary { background-color: var(--color-bg) !important; }
 
-/* Sombra suave usada en tarjetas / contenedores */
 .soft-shadow {
   box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
-.header-clean {
-  background-color: var(--color-primary) !important;
-}
-/* Limpia el background impuesto por bootstrap */
-.header-clean {
-  background-color: var(--color-primary) !important;
-  border-bottom: 4px solid var(--color-accent);
-}
-/* === Botones estilo tierra para el Header === */
-/* Define tu color de fondo y de texto personalizado */
+
+/* Botón personalizado tierra */
 .btn-custom-color {
-  background-color: var(--color-primary); /* Un color naranja/rojo personalizado */
+  background-color: var(--color-primary);
   border-color: #8a7d66;
-  color: rgb(0, 0, 0); /* Asegúrate de que el texto sea legible */
+  color: #000;
 }
 
-/* Define el estilo al pasar el ratón (hover) para una mejor experiencia de usuario */
 .btn-custom-color:hover {
-  background-color: #3d2f20;  /* Un tono ligeramente más oscuro para el hover */
+  background-color: #3d2f20;
   border-color: #eed6a1;
-  color: rgb(255, 255, 255); /* Asegúrate de que el texto sea legible */
+  color: #fff;
 }
-

@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { Container, Table, Button, Modal, Toast, ToastContainer } from 'react-bootstrap';
 import { CartContext } from './CartContext';
-import VideoChoco from "../assets/videos/choco (7).mp4";
+import VideoChoco from "../assets/videos/choco_7.mp4";
 
 const Carrito = () => {
   const { carrito, eliminarDelCarrito, vaciarCarrito } = useContext(CartContext);

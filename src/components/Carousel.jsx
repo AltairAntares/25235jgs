@@ -1,13 +1,14 @@
 import { useState } from 'react';
 import Carousel from 'react-bootstrap/Carousel';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 // Imágenes
-import Slide1 from '../assets/pictures/Slide_1.png';
+import Slide1 from '../assets/pictures/Slide_1.jpg';
 import Slide2 from '../assets/pictures/Slide_2.jpg';
 import Slide3 from '../assets/pictures/Slide_3.jpg';
 
 // Video
-import VideoChoco from "../assets/videos/choco (7).mp4";
+import VideoChoco from "../assets/videos/choco_7.mp4";
 
 function ControlledCarousel() {
   const [index, setIndex] = useState(0);

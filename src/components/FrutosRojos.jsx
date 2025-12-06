@@ -4,7 +4,7 @@ import { SearchContext } from './SearchContext';
 import { Form } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
-import VideoChoco from "../assets/videos/choco (7).mp4";
+import VideoChoco from "../assets/videos/choco_7.mp4";
 
 const FrutosRojos = () => {
   // 1. Añadir el hook useContext para acceder al estado de búsqueda global
