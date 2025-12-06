@@ -4,7 +4,7 @@ import { Navbar, Nav, Container, Button, Badge } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import { CartContext } from './CartContext';
-import Logo from '../assets/pictures/Logo.png'; 
+import Logo from '../assets/pictures/Logo.jpg'; 
 import '../index.css';
 
 const Header = () => {
