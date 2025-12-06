@@ -20,9 +20,9 @@ const Header = () => {
           <img 
             src={Logo}
             alt="Logo"
-            style={{ width: "150px", height: "auto", marginRight: "30px" }}
+            style={{ width: "100px", height: "auto", marginRight: "20px" }}
           />
-          <span style={{ fontSize:"3rem"}}>SNACKEAR</span>
+          <span style={{ fontSize:"2rem"}}>SNACKEAR</span>
         </Navbar.Brand>
 
         <Navbar.Toggle aria-controls="basic-navbar-nav" />

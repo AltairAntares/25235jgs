@@ -2,13 +2,14 @@ import React, { useContext, useState } from 'react';
 import { Container, Table, Button, Modal, Toast, ToastContainer } from 'react-bootstrap';
 import { CartContext } from './CartContext';
 import VideoChoco from "../assets/videos/choco_7.mp4";
+import Logo from '../assets/pictures/logo_b.jpg';
 
 const Carrito = () => {
   const { carrito, eliminarDelCarrito, vaciarCarrito } = useContext(CartContext);
   const [showForm, setShowForm] = useState(false);
   const [showToast, setShowToast] = useState(false);
 
-  // Función de confirmación + envío del formulario
+  // Función de confirmación + envío del formulario (sin cambios)
   const confirmarCompra = (e) => {
     e.preventDefault();
 
@@ -37,8 +38,44 @@ const Carrito = () => {
     0
   );
 
+  // Bloque JSX del video para reutilizarlo en ambos returns
+  const videoElement = (
+    <div className="w-100"> 
+      <div
+        style={{
+          position: "relative",
+          width: "100%",
+          height: "80px",
+          marginTop: "30px",
+          borderRadius: "18px",
+          overflow: "hidden",
+          boxShadow: "0 6px 18px rgba(0,0,0,0.22)"
+        }}
+      >
+        {/* VIDEO DE FONDO */}
+        <video
+          src={VideoChoco}
+          autoPlay
+          loop
+          muted
+          playsInline
+          style={{
+            position: "absolute",
+            top: "50%",
+            left: "50%",
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+            transform: "translate(-50%, -50%)",
+            zIndex: 1
+          }}
+        ></video>
+      </div>
+    </div>
+  );
+
   /* ---------------------------
-      CARRITO VACÍO
+      CARRITO VACÍO (RETURN 1)
   ----------------------------*/
   if (carrito.length === 0) {
     return (
@@ -60,10 +97,18 @@ const Carrito = () => {
             <div>Su pedido fue enviado correctamente.</div>
           </Toast>
         </ToastContainer>
+        
+        {/* AÑADIDO: Video al pie del Carrito Vacío */}
+        <Container className="d-flex justify-content-center">
+             <div style={{ maxWidth: "800px", width: "100%" }}>{videoElement}</div>
+        </Container>
       </>
     );
   }
 
+  /* ---------------------------
+      CARRITO CON PRODUCTOS (RETURN 2)
+  ----------------------------*/
   return (
     <>
       <Container className="mt-4 p-4 rounded-4 shadow-sm"
@@ -72,11 +117,11 @@ const Carrito = () => {
           border: "1px solid rgba(0,0,0,0.05)"
         }}
       >
+        {/* ... Contenido principal de la tabla ... */}
         <h3 style={{ color: "var(--color-accent)", fontWeight: "700" }}>
           Carrito de compras
         </h3>
 
-        {/* TABLA PREMIUM */}
         <Table bordered hover responsive className="mt-3 shadow-sm rounded-3 overflow-hidden">
           <thead style={{ backgroundColor: "var(--color-secondary)", color: "white" }}>
             <tr>
@@ -87,7 +132,6 @@ const Carrito = () => {
               <th></th>
             </tr>
           </thead>
-
           <tbody>
             {carrito.map((item) => (
               <tr key={item.id}>
@@ -129,128 +173,114 @@ const Carrito = () => {
             Comprar
           </Button>
         </div>
-
-                  {/* MODAL PREMIUM */}
-                  <Modal show={showForm} onHide={() => setShowForm(false)} centered>
-          <Modal.Header 
-            closeButton 
-            style={{
-              backgroundColor: "var(--color-secondary)",
-              padding: 0,
-              position: "relative",
-              overflow: "hidden",
-              height: "90px",    // <--- altura necesaria para que el video exista
-              zIndex: 5,
-            }}
-          >
-            {/* VIDEO DE FONDO */}
-            <video
-              src={VideoChoco}
-              autoPlay
-              loop
-              muted
-              playsInline
-              style={{
-                position: "absolute",
-                top: "50%",
-                left: "50%",
-                width: "100%",
-                height: "100%",
-                objectFit: "cover",
-                transform: "translate(-50%, -50%)",
-                zIndex: -1,
-                opacity: 0.95,     // opcional
-                pointerEvents: "none",
-
-              }}
-            ></video>
-
-            {/* TÍTULO ENCIMA DEL VIDEO */}
-            <Modal.Title
-              style={{
-                position: "relative",
-                zIndex: 2,
-                color: "white",
-                padding: "1rem",
-                fontWeight: "700",
-                textShadow: "0 2px 4px rgba(0,0,0,0.6)"
-              }}
-            >
-              Completar compra
-            </Modal.Title>
-          </Modal.Header>
-
-
-          <Modal.Body style={{ padding: "1.5rem", backgroundColor: "var(--color-bg)" }}>
-                          
-            <form onSubmit={confirmarCompra}>
-              <div className="d-flex gap-3">
-                <div className="form-group w-100">
-                  <label>Nombre:</label>
-                  <input className="form-control" type="text" name="Nombre" required />
-                </div>
-
-                <div className="form-group w-100">
-                  <label>Apellido:</label>
-                  <input className="form-control" type="text" name="Apellido" required />
-                </div>
-              </div>
-
-              <div className="d-flex gap-3 mt-3">
-                <div className="form-group w-100">
-                  <label>Teléfono:</label>
-                  <input className="form-control" type="text" name="Telefono" required />
-                </div>
-
-                <div className="form-group w-100">
-                  <label>Correo electrónico:</label>
-                  <input className="form-control" type="email" name="email" required />
-                </div>
-              </div>
-
-                <div className="form-group w-100">
-                  <label>Dirección:</label>
-                  <input className="form-control" type="text" name="Dirección" required />
-                </div>
-
-              <div className="form-group mt-3">
-                <label>Mensaje:</label>
-                <textarea className="form-control" name="Mensaje" rows="3"></textarea>
-              </div>
-
-              <input
-                type="hidden"
-                name="Pedido"
-                value={carrito
-                  .map(
-                    (item) =>
-                      `${item.title} x ${item.cantidad} = $${item.price * item.cantidad}`
-                  )
-                  .join(" | ")}
-              />
-
-              <input type="hidden" name="Total" value={total} />
-
-              <Button
-                className="w-100 mt-3"
-                type="submit"
-                style={{
-                  backgroundColor: "var(--color-primary)",
-                  borderColor: "var(--color-primary)",
-                  color: "var(--color-accent)",
-                  borderRadius: "10px",
-                  padding: "0.7rem",
-                  fontWeight: "600"
-                }}
-              >
-                Confirmar Compra
-              </Button>
-            </form>
-          </Modal.Body>
-        </Modal>
+        
+      </Container>
+      
+      {/* AÑADIDO: Video al pie del Carrito con Productos */}
+      <Container className="mt-3">
+         {videoElement} 
       </Container>
 
-      {/* TOAST GLOBAL */}
+
+      {/* MODAL (Con el video ya integrado en el Modal.Header) */}
+      <Modal show={showForm} onHide={() => setShowForm(false)} centered>
+<Modal.Header closeButton> {/* Añade 'closeButton' si no está, y quita estilos complejos */}
+    {/* 1. Modal.Title solo para Bootstrap (sin clases de centrado manuales).
+      2. Centramos el contenido dentro de un div. 
+    */}
+    <div className="w-100 d-flex justify-content-center">
+        <Modal.Title 
+            className="d-flex align-items-center" 
+            style={{ 
+                color: "black", 
+                fontWeight: "700", 
+                fontSize: "1.5rem" 
+            }}
+        >
+            <img 
+                src={Logo}
+                alt="Logo"
+                style={{ 
+                    width: "100px", 
+                    height: "auto", 
+                    marginRight: "12px", 
+                    borderRadius: "8px" 
+                }}
+            />
+            <h2 className="m-0">Completar compra</h2>
+        </Modal.Title>
+    </div>
+</Modal.Header>
+
+
+        <Modal.Body style={{ padding: "1.5rem", backgroundColor: "var(--color-bg)" }}>
+          {/* ... Contenido del Formulario de Compra ... */}
+          <form onSubmit={confirmarCompra}>
+            {/* ... Campos del formulario ... */}
+             <div className="d-flex gap-3">
+              <div className="form-group w-100">
+                <label>Nombre:</label>
+                <input className="form-control" type="text" name="Nombre" required />
+              </div>
+              <div className="form-group w-100">
+                <label>Apellido:</label>
+                <input className="form-control" type="text" name="Apellido" required />
+              </div>
+            </div>
+
+            <div className="d-flex gap-3 mt-3">
+              <div className="form-group w-100">
+                <label>Teléfono:</label>
+                <input className="form-control" type="text" name="Telefono" required />
+              </div>
+              <div className="form-group w-100">
+                <label>Correo electrónico:</label>
+                <input className="form-control" type="email" name="email" required />
+              </div>
+            </div>
+
+            <div className="form-group w-100">
+              <label>Dirección:</label>
+              <input className="form-control" type="text" name="Dirección" required />
+            </div>
+
+            <div className="form-group mt-3">
+              <label>Mensaje:</label>
+              <textarea className="form-control" name="Mensaje" rows="3"></textarea>
+            </div>
+
+            <input
+              type="hidden"
+              name="Pedido"
+              value={carrito
+                .map(
+                  (item) =>
+                    `${item.title} x ${item.cantidad} = $${item.price * item.cantidad}`
+                )
+                .join(" | ")}
+            />
+
+            <input type="hidden" name="Total" value={total} />
+
+            <Button
+              className="w-100 mt-3"
+              type="submit"
+              style={{
+                backgroundColor: "var(--color-primary)",
+                borderColor: "var(--color-primary)",
+                color: "var(--color-accent)",
+                borderRadius: "10px",
+                padding: "0.7rem",
+                fontWeight: "600"
+              }}
+            >
+              Confirmar Compra
+            </Button>
+          </form>
+        </Modal.Body>
+      </Modal>
+
+      {/* TOAST GLOBAL (sin cambios) */}
       <ToastContainer position="top-center" className="p-3 toast-elevated">
         <Toast
           className="elegant-toast text-center"
@@ -267,10 +297,7 @@ const Carrito = () => {
 
 
     </>
-
-
   );
 };
 
 export default Carrito;
-
