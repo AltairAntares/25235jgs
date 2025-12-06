@@ -11,7 +11,7 @@ import Chocolates from './components/Chocolates';
 import { CartProvider } from './components/CartContext';
 import Carrito from './components/Carrito';
 
-// 🔥 IMPORTACIÓN NUEVA PARA LA BÚSQUEDA GLOBAL
+// IMPORTACIÓN NUEVA PARA LA BÚSQUEDA GLOBAL
 import { SearchProvider } from './components/SearchContext';
 
 function App() {
