@@ -3,6 +3,7 @@ import { Container, Table, Button, Modal, Toast, ToastContainer } from 'react-bo
 import { CartContext } from './CartContext';
 import VideoChoco from "../assets/videos/choco_7.mp4";
 import Logo from '../assets/pictures/logo_b.jpg';
+import ScrollToTopButton from './ScrollToTopButton'; // Importamos el componente reutilizable
 
 const Carrito = () => {
   const { carrito, eliminarDelCarrito, vaciarCarrito } = useContext(CartContext);
@@ -40,7 +41,7 @@ const Carrito = () => {
 
   // Bloque JSX del video para reutilizarlo en ambos returns
   const videoElement = (
-    <div className="w-100"> 
+    <div className="w-100">
       <div
         style={{
           position: "relative",
@@ -75,7 +76,7 @@ const Carrito = () => {
   );
 
   /* ---------------------------
-      CARRITO VACÍO (RETURN 1)
+     CARRITO VACÍO (RETURN 1)
   ----------------------------*/
   if (carrito.length === 0) {
     return (
@@ -97,17 +98,20 @@ const Carrito = () => {
             <div>Su pedido fue enviado correctamente.</div>
           </Toast>
         </ToastContainer>
-        
-        {/* AÑADIDO: Video al pie del Carrito Vacío */}
+
+        {/* Video al pie del Carrito Vacío */}
         <Container className="d-flex justify-content-center">
-             <div style={{ maxWidth: "800px", width: "100%" }}>{videoElement}</div>
+          <div style={{ maxWidth: "800px", width: "100%" }}>{videoElement}</div>
         </Container>
+        
+        {/* ⬆️ BOTÓN VOLVER ARRIBA REUTILIZABLE */}
+        <ScrollToTopButton /> 
       </>
     );
   }
 
   /* ---------------------------
-      CARRITO CON PRODUCTOS (RETURN 2)
+     CARRITO CON PRODUCTOS (RETURN 2)
   ----------------------------*/
   return (
     <>
@@ -117,7 +121,6 @@ const Carrito = () => {
           border: "1px solid rgba(0,0,0,0.05)"
         }}
       >
-        {/* ... Contenido principal de la tabla ... */}
         <h3 style={{ color: "var(--color-accent)", fontWeight: "700" }}>
           Carrito de compras
         </h3>
@@ -173,51 +176,47 @@ const Carrito = () => {
             Comprar
           </Button>
         </div>
-        
+
       </Container>
-      
-      {/* AÑADIDO: Video al pie del Carrito con Productos */}
+
+      {/* Video al pie del Carrito con Productos */}
       <Container className="mt-3">
-         {videoElement} 
+        {videoElement}
       </Container>
 
 
       {/* MODAL (Con el video ya integrado en el Modal.Header) */}
       <Modal show={showForm} onHide={() => setShowForm(false)} centered>
-<Modal.Header closeButton> {/* Añade 'closeButton' si no está, y quita estilos complejos */}
-    {/* 1. Modal.Title solo para Bootstrap (sin clases de centrado manuales).
-      2. Centramos el contenido dentro de un div. 
-    */}
-    <div className="w-100 d-flex justify-content-center">
-        <Modal.Title 
-            className="d-flex align-items-center" 
-            style={{ 
-                color: "black", 
-                fontWeight: "700", 
-                fontSize: "1.5rem" 
-            }}
-        >
-            <img 
+        <Modal.Header closeButton>
+          <div className="w-100 d-flex justify-content-center">
+            <Modal.Title
+              className="d-flex align-items-center"
+              style={{
+                color: "black",
+                fontWeight: "700",
+                fontSize: "1.5rem"
+              }}
+            >
+              <img
                 src={Logo}
                 alt="Logo"
-                style={{ 
-                    width: "100px", 
-                    height: "auto", 
-                    marginRight: "12px", 
-                    borderRadius: "8px" 
+                style={{
+                  width: "100px",
+                  height: "auto",
+                  marginRight: "12px",
+                  borderRadius: "8px"
                 }}
-            />
-            <h2 className="m-0">Completar compra</h2>
-        </Modal.Title>
-    </div>
-</Modal.Header>
+              />
+              <h2 className="m-0">Completar compra</h2>
+            </Modal.Title>
+          </div>
+        </Modal.Header>
 
 
         <Modal.Body style={{ padding: "1.5rem", backgroundColor: "var(--color-bg)" }}>
           {/* ... Contenido del Formulario de Compra ... */}
           <form onSubmit={confirmarCompra}>
-            {/* ... Campos del formulario ... */}
-             <div className="d-flex gap-3">
+            <div className="d-flex gap-3">
               <div className="form-group w-100">
                 <label>Nombre:</label>
                 <input className="form-control" type="text" name="Nombre" required />
@@ -228,6 +227,7 @@ const Carrito = () => {
               </div>
             </div>
 
+            {/* ... resto del formulario ... */}
             <div className="d-flex gap-3 mt-3">
               <div className="form-group w-100">
                 <label>Teléfono:</label>
@@ -249,17 +249,7 @@ const Carrito = () => {
               <textarea className="form-control" name="Mensaje" rows="3"></textarea>
             </div>
 
-            <input
-              type="hidden"
-              name="Pedido"
-              value={carrito
-                .map(
-                  (item) =>
-                    `${item.title} x ${item.cantidad} = $${item.price * item.cantidad}`
-                )
-                .join(" | ")}
-            />
-
+            <input type="hidden" name="Pedido" value={carrito.map((item) => `${item.title} x ${item.cantidad} = $${item.price * item.cantidad}`).join(" | ")} />
             <input type="hidden" name="Total" value={total} />
 
             <Button
@@ -294,8 +284,9 @@ const Carrito = () => {
           <div>Su pedido fue enviado correctamente.</div>
         </Toast>
       </ToastContainer>
-
-
+      
+      {/* ⬆️ BOTÓN VOLVER ARRIBA REUTILIZABLE */}
+      <ScrollToTopButton /> 
     </>
   );
 };

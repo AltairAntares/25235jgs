@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Table, Button, Form, Modal } from 'react-bootstrap';
+import ScrollToTopButton from './ScrollToTopButton'; // 1. ¡Importamos el componente flotante!
 
 const API_URL = 'https://692c695dc829d464006f7fad.mockapi.io/products';
 
@@ -152,7 +153,7 @@ const CrudProductos = () => {
                 value={form.category}
                 onChange={e => setForm({ ...form, category: e.target.value })}
                 required
-              />  
+              /> 	
             </Form.Group>
             <Form.Group className="mb-2">
               <Form.Label>Imagen (URL)</Form.Label>
@@ -166,6 +167,10 @@ const CrudProductos = () => {
           </Form>
         </Modal.Body>
       </Modal>
+      
+      {/* 2. Añadimos el componente flotante al final del contenido */}
+      <ScrollToTopButton />
+
     </div>
   );
 };
