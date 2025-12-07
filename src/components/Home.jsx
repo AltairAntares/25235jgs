@@ -126,6 +126,6 @@ function ControlledCarousel() {
   );
 }
 
-export default Home;
+export default ControlledCarousel;
 
 

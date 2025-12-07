@@ -55,4 +55,4 @@ const Home = () => {
   );
 };
 
-export default Productos;
+export default Home;
