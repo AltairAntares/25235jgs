@@ -35,22 +35,22 @@ const Header = () => {
             {/* m-1: Margen pequeño para que los botones no se peguen entre sí al envolver. */}
             {/* me-lg-3: Mantener margen a la derecha en escritorio. */}
             <Nav.Item className="m-1 me-lg-3">
-              <Button variant="outline-dark" as={Link} to="/">Home</Button>
+              <Button className="btn-custom-color" as={Link} to="/">Home</Button>
             </Nav.Item>
             <Nav.Item className="m-1 me-lg-3">
-              <Button variant="outline-dark" as={Link} to="/productos">Productos</Button>
+              <Button className="btn-custom-color" as={Link} to="/productos">Productos</Button>
             </Nav.Item>
             <Nav.Item className="m-1 me-lg-3">
-              <Button variant="outline-dark" as={Link} to="/frutos-secos">Frutos Secos</Button>
+              <Button className="btn-custom-color" as={Link} to="/frutos-secos">Frutos Secos</Button>
             </Nav.Item>
             <Nav.Item className="m-1 me-lg-3">
-              <Button variant="outline-dark" as={Link} to="/frutos-rojos">Frutos Rojos</Button>
+              <Button className="btn-custom-color" as={Link} to="/frutos-rojos">Frutos Rojos</Button>
             </Nav.Item>
             <Nav.Item className="m-1 me-lg-3">
-              <Button variant="outline-dark" as={Link} to="/chocolates">Chocolates</Button>
+              <Button className="btn-custom-color" as={Link} to="/chocolates">Chocolates</Button>
             </Nav.Item>
             <Nav.Item className="m-1 me-lg-2">
-              <Button variant="outline-dark" as={Link} to="/administracion">Administración </Button>
+              <Button className="btn-custom-color" as={Link} to="/administracion">Administración </Button>
             </Nav.Item>
 
             {/* 2. Ícono del Carrito */}

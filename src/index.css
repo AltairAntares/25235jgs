@@ -1,12 +1,14 @@
 /* ------------------------------------------
-   🎨 PALETA DE COLORES SNAKEAR ARGENTINA
+   PALETA DE COLORES SNAKEAR ARGENTINA
 ------------------------------------------- */
 :root {
   --color-primary: #d8b75d;
   --color-bg: #f3dcb3;
   --color-text: #3d2f20;
   --color-accent: #2f2418;
-  --color-success: #7a8f58;
+  --color-success: #9b6a2a;
+  --color-rest: #f3b646;
+  --color-bt-dark: #e9bc67;
 
   font-family: "Avenir", system-ui, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -69,10 +71,10 @@ button {
 }
 
 /* ------------------------------------------
-   🍯 TOAST ELEGANTE
+   TOAST 
 ------------------------------------------- */
 .elegant-toast {
-  background: linear-gradient(135deg, var(--color-success), #9bbf6a);
+  background: linear-gradient(135deg, var(--color-success), #b3a781);
   color: white;
   border-radius: 15px;
   padding: 20px;
@@ -126,13 +128,14 @@ button {
 
 /* Botón personalizado tierra */
 .btn-custom-color {
-  background-color: var(--color-primary);
-  border-color: #8a7d66;
-  color: #000;
+  background-color: var(--color-bt-dark);
+  border-color: var(--color-text);
+  color: var(--color-text);
 }
 
 .btn-custom-color:hover {
-  background-color: #3d2f20;
-  border-color: #eed6a1;
-  color: #fff;
+  background-color: var(--color-text);
+  border-color: var(--color-text);
+  color: var(--color-bg);
+  scale: 1.1;
 }
