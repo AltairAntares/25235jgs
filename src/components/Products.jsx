@@ -7,7 +7,7 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import VideoChoco from "../assets/videos/choco_7.mp4";
 import ScrollToTopButton from './ScrollToTopButton'; // ¡Nuevo!
 
-const Home = () => {
+const Productos = () => {
   const { search, setSearch } = useContext(SearchContext);
 
   return (
@@ -55,4 +55,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Productos;

@@ -3,29 +3,40 @@ import { Container, Table, Button, Modal, Toast, ToastContainer } from 'react-bo
 import { CartContext } from './CartContext';
 import VideoChoco from "../assets/videos/choco_7.mp4";
 import Logo from '../assets/pictures/logo_b.jpg';
-import ScrollToTopButton from './ScrollToTopButton'; // Importamos el componente reutilizable
+import ScrollToTopButton from './ScrollToTopButton'; 
 
 const Carrito = () => {
-  const { carrito, eliminarDelCarrito, vaciarCarrito } = useContext(CartContext);
+  // 🚀 OBTENEMOS procesarCompra del contexto para manejar la lógica de stock
+  const { carrito, eliminarDelCarrito, vaciarCarrito, procesarCompra } = useContext(CartContext);
   const [showForm, setShowForm] = useState(false);
   const [showToast, setShowToast] = useState(false);
 
-  // Función de confirmación + envío del formulario (sin cambios)
-  const confirmarCompra = (e) => {
+  // Función de confirmación + envío del formulario (MODIFICADA para stock)
+  const confirmarCompra = async (e) => {
     e.preventDefault();
 
     const confirmado = window.confirm("¿Deseas confirmar la compra?");
     if (!confirmado) return;
 
     const form = e.target;
+    
+    // 1. 🚀 ACTUALIZAR STOCK EN LA API
+    // Esperamos a que la actualización de stock en MockAPI se complete
+    const stockUpdateSuccess = await procesarCompra();
 
+    if (!stockUpdateSuccess) {
+        alert("Hubo un error al actualizar el stock de los productos. La compra no fue completada.");
+        return; // Detener el proceso si la actualización falla
+    }
+
+    // 2. ENVIAR FORMULARIO SOLO SI EL STOCK SE ACTUALIZÓ CON ÉXITO
     fetch("https://formspree.io/f/meogblkq", {
       method: "POST",
       body: new FormData(form),
       headers: { "Accept": "application/json" }
     })
       .then(() => {
-        vaciarCarrito();
+        // vaciarCarrito() se llama dentro de procesarCompra si fue exitoso
         setShowForm(false);
         setShowToast(true);
       })
@@ -185,7 +196,7 @@ const Carrito = () => {
       </Container>
 
 
-      {/* MODAL (Con el video ya integrado en el Modal.Header) */}
+      {/* MODAL */}
       <Modal show={showForm} onHide={() => setShowForm(false)} centered>
         <Modal.Header closeButton>
           <div className="w-100 d-flex justify-content-center">
@@ -227,7 +238,6 @@ const Carrito = () => {
               </div>
             </div>
 
-            {/* ... resto del formulario ... */}
             <div className="d-flex gap-3 mt-3">
               <div className="form-group w-100">
                 <label>Teléfono:</label>

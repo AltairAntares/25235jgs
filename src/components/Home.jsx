@@ -10,7 +10,7 @@ import Slide3 from '../assets/pictures/Slide_3.jpg';
 // Video
 import VideoChoco from "../assets/videos/choco_7.mp4";
 
-function ControlledCarousel() {
+function Home() {
   const [index, setIndex] = useState(0);
 
   const handleSelect = (selectedIndex) => {
@@ -126,6 +126,6 @@ function ControlledCarousel() {
   );
 }
 
-export default ControlledCarousel;
+export default Home;
 
 
